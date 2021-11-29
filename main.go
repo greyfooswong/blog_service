@@ -13,6 +13,10 @@ import (
 	"time"
 )
 
+// @title 博客系统
+// @version 1.0
+// @description blog_service
+// @termsOfService southli
 func init() {
 	err := setupSetting()
 	if err != nil {
