@@ -8,6 +8,17 @@ definitions:
       total_rows:
         type: integer
     type: object
+  errcode.Error:
+    properties:
+      code:
+        type: integer
+      details:
+        items:
+          type: string
+        type: array
+      msg:
+        type: string
+    type: object
   model.Tag:
     properties:
       created_by:
@@ -81,11 +92,11 @@ paths:
         "400":
           description: 请求错误
           schema:
-            $ref: '#/definitions/model.TagSwagger'
+            $ref: '#/definitions/errcode.Error'
         "500":
           description: 内部错误
           schema:
-            $ref: '#/definitions/model.TagSwagger'
+            $ref: '#/definitions/errcode.Error'
       summary: 获取多个标签
     post:
       parameters:
@@ -111,7 +122,6 @@ paths:
         maxLength: 100
         minLength: 3
         name: created_by
-        required: true
         schema:
           type: string
       produces:
@@ -120,20 +130,20 @@ paths:
         "200":
           description: 成功
           schema:
-            $ref: '#/definitions/model.TagSwagger'
+            $ref: '#/definitions/model.Tag'
         "400":
           description: 请求错误
           schema:
-            $ref: '#/definitions/model.TagSwagger'
+            $ref: '#/definitions/errcode.Error'
         "500":
           description: 内部错误
           schema:
-            $ref: '#/definitions/model.TagSwagger'
+            $ref: '#/definitions/errcode.Error'
       summary: 新增标签
   /api/v1/tags/{id}:
     delete:
       parameters:
-      - description: 标签 ID
+      - description: 标签ID
         in: path
         name: id
         required: true
@@ -148,15 +158,15 @@ paths:
         "400":
           description: 请求错误
           schema:
-            $ref: '#/definitions/model.TagSwagger'
+            $ref: '#/definitions/errcode.Error'
         "500":
           description: 内部错误
           schema:
-            $ref: '#/definitions/model.TagSwagger'
+            $ref: '#/definitions/errcode.Error'
       summary: 删除标签
     put:
       parameters:
-      - description: 标签 ID
+      - description: 标签ID
         in: path
         name: id
         required: true
@@ -192,15 +202,15 @@ paths:
           description: 成功
           schema:
             items:
-              $ref: '#/definitions/model.TagSwagger'
+              $ref: '#/definitions/model.Tag'
             type: array
         "400":
           description: 请求错误
           schema:
-            $ref: '#/definitions/model.TagSwagger'
+            $ref: '#/definitions/errcode.Error'
         "500":
           description: 内部错误
           schema:
-            $ref: '#/definitions/model.TagSwagger'
+            $ref: '#/definitions/errcode.Error'
       summary: 更新标签
 swagger: "2.0"
