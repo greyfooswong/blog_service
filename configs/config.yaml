@@ -32,3 +32,13 @@ JWT:
   Secret: eddycjy
   Issuer: blog-service
   Expire: 7200
+
+Email:
+  Host: smtp.qq.com
+  Port: 465
+  UserName: 961065551@qq.com
+  Password: YANGYang1314
+  IsSSL: true
+  From: 961065551@qq.com
+  To:
+    - wy306765@163.com
