@@ -107,8 +107,8 @@ func (l *Logger) WithCallersFrames() *Logger {
 }
 
 func (l *Logger) WithTrace() *Logger {
-	ginCtx, ok := l.ctx.(*gin.Context)
-	if ok {
+	ginCtx, ko := l.ctx.(*gin.Context)
+	if ko {
 		return l.WithFields(Fields{
 			"trace_id": ginCtx.MustGet("X-Trace-ID"),
 			"span_id":  ginCtx.MustGet("X-Span-ID"),
